@@ -1,1 +1,1 @@
-# arcpycncoords
+一套在ArcMap中wgs84/cgcs2000坐标偏移的相互转换的脚本。
