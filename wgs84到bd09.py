@@ -5,17 +5,17 @@ class LngLatTransfer():
 
     def __init__(self):
         self.x_pi = 3.14159265358979324 * 3000.0 / 180.0
-        self.pi = math.pi  # ¦Ğ
-        self.a = 6378245.0  # ³¤°ëÖá
-        self.es = 0.00669342162296594323  # Æ«ĞÄÂÊÆ½·½
+        self.pi = math.pi  # Ï€
+        self.a = 6378245.0  # é•¿åŠè½´
+        self.es = 0.00669342162296594323  # åå¿ƒç‡å¹³æ–¹
         pass
 
     def GCJ02_to_BD09(self, gcj_lng, gcj_lat):
         """
-        ÊµÏÖGCJ02ÏòBD09×ø±êÏµµÄ×ª»»
-        :param lng: GCJ02×ø±êÏµÏÂµÄ¾­¶È
-        :param lat: GCJ02×ø±êÏµÏÂµÄÎ³¶È
-        :return: ×ª»»ºóµÄBD09ÏÂ¾­Î³¶È
+        å®ç°GCJ02å‘BD09åæ ‡ç³»çš„è½¬æ¢
+        :param lng: GCJ02åæ ‡ç³»ä¸‹çš„ç»åº¦
+        :param lat: GCJ02åæ ‡ç³»ä¸‹çš„çº¬åº¦
+        :return: è½¬æ¢åçš„BD09ä¸‹ç»çº¬åº¦
         """
         z = math.sqrt(gcj_lng * gcj_lng + gcj_lat * gcj_lat) + 0.00002 * math.sin(gcj_lat * self.x_pi)
         theta = math.atan2(gcj_lat, gcj_lng) + 0.000003 * math.cos(gcj_lng * self.x_pi)
@@ -26,10 +26,10 @@ class LngLatTransfer():
 
     def BD09_to_GCJ02(self, bd_lng, bd_lat):
         '''
-        ÊµÏÖBD09×ø±êÏµÏòGCJ02×ø±êÏµµÄ×ª»»
-        :param bd_lng: BD09×ø±êÏµÏÂµÄ¾­¶È
-        :param bd_lat: BD09×ø±êÏµÏÂµÄÎ³¶È
-        :return: ×ª»»ºóµÄGCJ02ÏÂ¾­Î³¶È
+        å®ç°BD09åæ ‡ç³»å‘GCJ02åæ ‡ç³»çš„è½¬æ¢
+        :param bd_lng: BD09åæ ‡ç³»ä¸‹çš„ç»åº¦
+        :param bd_lat: BD09åæ ‡ç³»ä¸‹çš„çº¬åº¦
+        :return: è½¬æ¢åçš„GCJ02ä¸‹ç»çº¬åº¦
         '''
         x = bd_lng - 0.0065
         y = bd_lat - 0.006
@@ -42,10 +42,10 @@ class LngLatTransfer():
 
     def WGS84_to_GCJ02(self, lng, lat):
         '''
-        ÊµÏÖWGS84×ø±êÏµÏòGCJ02×ø±êÏµµÄ×ª»»
-        :param lng: WGS84×ø±êÏµÏÂµÄ¾­¶È
-        :param lat: WGS84×ø±êÏµÏÂµÄÎ³¶È
-        :return: ×ª»»ºóµÄGCJ02ÏÂ¾­Î³¶È
+        å®ç°WGS84åæ ‡ç³»å‘GCJ02åæ ‡ç³»çš„è½¬æ¢
+        :param lng: WGS84åæ ‡ç³»ä¸‹çš„ç»åº¦
+        :param lat: WGS84åæ ‡ç³»ä¸‹çš„çº¬åº¦
+        :return: è½¬æ¢åçš„GCJ02ä¸‹ç»çº¬åº¦
         '''
 
 
@@ -65,10 +65,10 @@ class LngLatTransfer():
 
     def GCJ02_to_WGS84(self, gcj_lng, gcj_lat):
         '''
-        ÊµÏÖGCJ02×ø±êÏµÏòWGS84×ø±êÏµµÄ×ª»»
-        :param gcj_lng: GCJ02×ø±êÏµÏÂµÄ¾­¶È
-        :param gcj_lat: GCJ02×ø±êÏµÏÂµÄÎ³¶È
-        :return: ×ª»»ºóµÄWGS84ÏÂ¾­Î³¶È
+        å®ç°GCJ02åæ ‡ç³»å‘WGS84åæ ‡ç³»çš„è½¬æ¢
+        :param gcj_lng: GCJ02åæ ‡ç³»ä¸‹çš„ç»åº¦
+        :param gcj_lat: GCJ02åæ ‡ç³»ä¸‹çš„çº¬åº¦
+        :return: è½¬æ¢åçš„WGS84ä¸‹ç»çº¬åº¦
         '''
         dlat = self._transformlat(gcj_lng - 105.0, gcj_lat - 35.0)
         dlng = self._transformlng(gcj_lng - 105.0, gcj_lat - 35.0)
@@ -87,10 +87,10 @@ class LngLatTransfer():
 
     def BD09_to_WGS84(self, bd_lng, bd_lat):
         '''
-        ÊµÏÖBD09×ø±êÏµÏòWGS84×ø±êÏµµÄ×ª»»
-        :param bd_lng: BD09×ø±êÏµÏÂµÄ¾­¶È
-        :param bd_lat: BD09×ø±êÏµÏÂµÄÎ³¶È
-        :return: ×ª»»ºóµÄWGS84ÏÂ¾­Î³¶È
+        å®ç°BD09åæ ‡ç³»å‘WGS84åæ ‡ç³»çš„è½¬æ¢
+        :param bd_lng: BD09åæ ‡ç³»ä¸‹çš„ç»åº¦
+        :param bd_lat: BD09åæ ‡ç³»ä¸‹çš„çº¬åº¦
+        :return: è½¬æ¢åçš„WGS84ä¸‹ç»çº¬åº¦
         '''
         lng, lat = self.BD09_to_GCJ02(bd_lng, bd_lat)
         return self.GCJ02_to_WGS84(lng, lat)
@@ -98,10 +98,10 @@ class LngLatTransfer():
 
     def WGS84_to_BD09(self, lng, lat):
         '''
-        ÊµÏÖWGS84×ø±êÏµÏòBD09×ø±êÏµµÄ×ª»»
-        :param lng: WGS84×ø±êÏµÏÂµÄ¾­¶È
-        :param lat: WGS84×ø±êÏµÏÂµÄÎ³¶È
-        :return: ×ª»»ºóµÄBD09ÏÂ¾­Î³¶È
+        å®ç°WGS84åæ ‡ç³»å‘BD09åæ ‡ç³»çš„è½¬æ¢
+        :param lng: WGS84åæ ‡ç³»ä¸‹çš„ç»åº¦
+        :param lat: WGS84åæ ‡ç³»ä¸‹çš„çº¬åº¦
+        :return: è½¬æ¢åçš„BD09ä¸‹ç»çº¬åº¦
         '''
         lng, lat = self.WGS84_to_GCJ02(lng, lat)
         return self.GCJ02_to_BD09(lng, lat)
@@ -132,10 +132,10 @@ class LngLatTransfer():
 
     def WGS84_to_WebMercator(self, lng, lat):
         '''
-        ÊµÏÖWGS84ÏòwebÄ«¿¨ÍĞµÄ×ª»»
-        :param lng: WGS84¾­¶È
-        :param lat: WGS84Î³¶È
-        :return: ×ª»»ºóµÄwebÄ«¿¨ÍĞ×ø±ê
+        å®ç°WGS84å‘webå¢¨å¡æ‰˜çš„è½¬æ¢
+        :param lng: WGS84ç»åº¦
+        :param lat: WGS84çº¬åº¦
+        :return: è½¬æ¢åçš„webå¢¨å¡æ‰˜åæ ‡
         '''
         x = lng * 20037508.342789 / 180
         y = math.log(math.tan((90 + lat) * self.pi / 360)) / (self.pi / 180)
@@ -144,10 +144,10 @@ class LngLatTransfer():
 
     def WebMercator_to_WGS84(self, x, y):
         '''
-        ÊµÏÖwebÄ«¿¨ÍĞÏòWGS84µÄ×ª»»
-        :param x: webÄ«¿¨ÍĞx×ø±ê
-        :param y: webÄ«¿¨ÍĞy×ø±ê
-        :return: ×ª»»ºóµÄWGS84¾­Î³¶È
+        å®ç°webå¢¨å¡æ‰˜å‘WGS84çš„è½¬æ¢
+        :param x: webå¢¨å¡æ‰˜xåæ ‡
+        :param y: webå¢¨å¡æ‰˜yåæ ‡
+        :return: è½¬æ¢åçš„WGS84ç»çº¬åº¦
         '''
         lng = x / 20037508.34 * 180
         lat = y / 20037508.34 * 180
@@ -166,93 +166,95 @@ for ftCls in ftClsNameList.split(';'):
   shapefieldname = desc.shapeFieldName
   shapeType = desc.shapeType
 
-  rows = arcpy.UpdateCursor(ftCls)
+  with arcpy.da.UpdateCursor(ftCls, (oidFieldName, 'SHAPE@')) as rows:
+  # WGS84åæ ‡è½¬BD09åæ ‡
 
-  # WGS84×ø±ê×ªGCJ02»ğĞÇ×ø±ê
-
-  # ÃæÒªËØ
-  if shapeType == "Polygon":
-    rowCount = 0
-    for row in rows:
-      oid = row.getValue(oidFieldName)
-      try:
-        feat = row.getValue(shapefieldname)
-        arr_feat = arcpy.Array()
-        for part in feat:
-          arr_part = arcpy.Array()
-          for pnt in part:
+    # é¢è¦ç´ 
+    if shapeType == "Polygon":
+      rowCount = 0
+      for row in rows:
+        oid = row[0]
+        try:
+          feat = row[1]
+          arr_feat = arcpy.Array()
+          for part in feat:
+            arr_part = arcpy.Array()
+            for pnt in part:
+              if pnt is not None:
+                x = pnt.X
+                y = pnt.Y
+                x, y = lnglatTransfer.WGS84_to_BD09(x, y)
+                arr_part.add(arcpy.Point(x, y))
+              else:
+                arr_part.add(None)
+            arr_feat.add(arr_part)
+          polygon = arcpy.Polygon(arr_feat, spatial_ref)
+          row[1] = polygon
+          rows.updateRow(row)
+          rowCount += 1
+          arcpy.SetProgressorLabel("%s:%d/%d" %(feature_name, rowCount, feature_count))
+          arcpy.SetProgressorPosition(int(rowCount * 100 / feature_count))
+        except Exception as e:
+          arcpy.AddWarning("OID{%d}:%s" %(oid, str(e)));
+    # çº¿è¦ç´ 
+    elif shapeType == "Polyline":
+      rowCount = 0
+      for row in rows:
+        oid = row[0]
+        try:
+          feat = row[1]
+          arr_feat = arcpy.Array()
+          for part in feat:
+            arr_part = arcpy.Array()
+            for pnt in part:
+              x = pnt.X
+              y = pnt.Y
+              x, y = lnglatTransfer.WGS84_to_BD09(x, y)
+              arr_part.add(arcpy.Point(x, y))
+            arr_feat.add(arr_part)
+          polyline = arcpy.Polyline(arr_feat, spatial_ref)
+          row[1] = polyline
+          rows.updateRow(row)
+          rowCount += 1
+          arcpy.SetProgressorLabel("%s:%d/%d" %(feature_name, rowCount, feature_count))
+          arcpy.SetProgressorPosition(int(rowCount * 100 / feature_count))
+        except Exception as e:
+          arcpy.AddWarning("OID{%d}:%s" %(oid, str(e)));
+    # å¤šç‚¹è¦ç´ 
+    elif shapeType == "Multipoint":
+      rowCount = 0
+      for row in rows:
+        oid = row[0]
+        try:
+          feat = row[1]
+          arr_feat = arcpy.Array()
+          for pnt in feat:
             x = pnt.X
             y = pnt.Y
             x, y = lnglatTransfer.WGS84_to_BD09(x, y)
-            arr_part.add(arcpy.Point(x, y))
-          arr_feat.add(arr_part)
-        polygon = arcpy.Polygon(arr_feat, spatial_ref)
-        row.setValue(shapefieldname, polygon)
-        rows.updateRow(row)
-        rowCount += 1
-        arcpy.SetProgressorLabel("%s:%d/%d" %(feature_name, rowCount, feature_count))
-        arcpy.SetProgressorPosition(int(rowCount * 100 / feature_count))
-      except Exception as e:
-        arcpy.AddWarning("OID{%d}:%s" %(oid, str(e)));
-  # ÏßÒªËØ
-  elif shapeType == "Polyline":
-    rowCount = 0
-    for row in rows:
-      oid = row.getValue(oidFieldName)
-      try:
-        feat = row.getValue(shapefieldname)
-        arr_feat = arcpy.Array()
-        for part in feat:
-          arr_part = arcpy.Array()
-          for pnt in part:
-            x = pnt.X
-            y = pnt.Y
-            x, y = lnglatTransfer.WGS84_to_BD09(x, y)
-            arr_part.add(arcpy.Point(x, y))
-          arr_feat.add(arr_part)
-        polyline = arcpy.Polyline(arr_feat, spatial_ref)
-        row.setValue(shapefieldname, polyline)
-        rows.updateRow(row)
-        rowCount += 1
-        arcpy.SetProgressorLabel("%s:%d/%d" %(feature_name, rowCount, feature_count))
-        arcpy.SetProgressorPosition(int(rowCount * 100 / feature_count))
-      except Exception as e:
-        arcpy.AddWarning("OID{%d}:%s" %(oid, str(e)));
-  # ¶àµãÒªËØ
-  elif shapeType == "Multipoint":
-    rowCount = 0
-    for row in rows:
-      oid = row.getValue(oidFieldName)
-      try:
-        feat = row.getValue(shapefieldname)
-        arr_feat = arcpy.Array()
-        for pnt in feat:
-          x = pnt.X
-          y = pnt.Y
+            arr_feat.add(arcpy.Point(x, y))
+          multipoint = arcpy.Multipoint(arr_feat, spatial_ref)
+          row[1] = multipoint
+          rows.updateRow(row)
+          rowCount += 1
+          arcpy.SetProgressorLabel("%s:%d/%d" %(feature_name, rowCount, feature_count))
+          arcpy.SetProgressorPosition(int(rowCount * 100 / feature_count))
+        except Exception as e:
+          arcpy.AddWarning("OID{%d}:%s" %(oid, str(e)));
+    elif shapeType == "Point":
+      rowCount = 0
+      for row in rows:
+        oid = row[0]
+        try:
+          feat = row[1]
+          x = feat.centroid.X
+          y = feat.centroid.Y
           x, y = lnglatTransfer.WGS84_to_BD09(x, y)
-          arr_feat.add(arcpy.Point(x, y))
-        multipoint = arcpy.Multipoint(arr_feat, spatial_ref)
-        row.setValue(shapefieldname, multipoint)
-        rows.updateRow(row)
-        rowCount += 1
-        arcpy.SetProgressorLabel("%s:%d/%d" %(feature_name, rowCount, feature_count))
-        arcpy.SetProgressorPosition(int(rowCount * 100 / feature_count))
-      except Exception as e:
-        arcpy.AddWarning("OID{%d}:%s" %(oid, str(e)));
-  elif shapeType == "Point":
-    rowCount = 0
-    for row in rows:
-      oid = row.getValue(oidFieldName)
-      try:
-        feat = row.getValue(shapefieldname)
-        x = feat.centroid.X
-        y = feat.centroid.Y
-        x, y = lnglatTransfer.WGS84_to_BD09(x, y)
-        point = arcpy.PointGeometry(arcpy.Point(x, y), spatial_ref);
-        row.setValue(shapefieldname, point)
-        rows.updateRow(row)
-        rowCount += 1
-        arcpy.SetProgressorLabel("%s:%d/%d" %(feature_name, rowCount, feature_count))
-        arcpy.SetProgressorPosition(int(rowCount * 100 / feature_count))
-      except Exception as e:
-        arcpy.AddWarning("OID{%d}:%s" %(oid, str(e)));
+          point = arcpy.PointGeometry(arcpy.Point(x, y), spatial_ref);
+          row[1] = point
+          rows.updateRow(row)
+          rowCount += 1
+          arcpy.SetProgressorLabel("%s:%d/%d" %(feature_name, rowCount, feature_count))
+          arcpy.SetProgressorPosition(int(rowCount * 100 / feature_count))
+        except Exception as e:
+          arcpy.AddWarning("OID{%d}:%s" %(oid, str(e)));
