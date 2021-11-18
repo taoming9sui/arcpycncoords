@@ -167,7 +167,7 @@ for ftCls in ftClsNameList.split(';'):
   shapeType = desc.shapeType
 
   with arcpy.da.UpdateCursor(ftCls, (oidFieldName, 'SHAPE@')) as rows:
-  # WGS84坐标转BD09坐标
+  # BD09坐标转WGS84坐标
 
     # 面要素
     if shapeType == "Polygon":
@@ -183,7 +183,7 @@ for ftCls in ftClsNameList.split(';'):
               if pnt is not None:
                 x = pnt.X
                 y = pnt.Y
-                x, y = lnglatTransfer.WGS84_to_BD09(x, y)
+                x, y = lnglatTransfer.BD09_to_WGS84(x, y)
                 arr_part.add(arcpy.Point(x, y))
               else:
                 arr_part.add(None)
@@ -209,7 +209,7 @@ for ftCls in ftClsNameList.split(';'):
             for pnt in part:
               x = pnt.X
               y = pnt.Y
-              x, y = lnglatTransfer.WGS84_to_BD09(x, y)
+              x, y = lnglatTransfer.BD09_to_WGS84(x, y)
               arr_part.add(arcpy.Point(x, y))
             arr_feat.add(arr_part)
           polyline = arcpy.Polyline(arr_feat, spatial_ref)
@@ -231,7 +231,7 @@ for ftCls in ftClsNameList.split(';'):
           for pnt in feat:
             x = pnt.X
             y = pnt.Y
-            x, y = lnglatTransfer.WGS84_to_BD09(x, y)
+            x, y = lnglatTransfer.BD09_to_WGS84(x, y)
             arr_feat.add(arcpy.Point(x, y))
           multipoint = arcpy.Multipoint(arr_feat, spatial_ref)
           row[1] = multipoint
@@ -249,7 +249,7 @@ for ftCls in ftClsNameList.split(';'):
           feat = row[1]
           x = feat.centroid.X
           y = feat.centroid.Y
-          x, y = lnglatTransfer.WGS84_to_BD09(x, y)
+          x, y = lnglatTransfer.BD09_to_WGS84(x, y)
           point = arcpy.PointGeometry(arcpy.Point(x, y), spatial_ref);
           row[1] = point
           rows.updateRow(row)
